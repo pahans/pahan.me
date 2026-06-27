@@ -1,233 +1,76 @@
 {
-	"$schema": "https://emdashcms.com/seed.schema.json",
-	"version": "1",
-	"meta": {
-		"name": "Starter",
-		"description": "A minimal EmDash starter with posts and pages",
-		"author": "EmDash"
-	},
-	"settings": {
-		"title": "My Site",
-		"tagline": "Built with EmDash"
-	},
-	"collections": [
-		{
-			"slug": "posts",
-			"label": "Posts",
-			"labelSingular": "Post",
-			"supports": ["drafts", "revisions", "search", "seo"],
-			"fields": [
-				{
-					"slug": "title",
-					"label": "Title",
-					"type": "string",
-					"required": true,
-					"searchable": true
-				},
-				{
-					"slug": "featured_image",
-					"label": "Featured Image",
-					"type": "image"
-				},
-				{
-					"slug": "content",
-					"label": "Content",
-					"type": "portableText",
-					"searchable": true
-				},
-				{
-					"slug": "excerpt",
-					"label": "Excerpt",
-					"type": "text"
-				}
-			]
-		},
-		{
-			"slug": "pages",
-			"label": "Pages",
-			"labelSingular": "Page",
-			"urlPattern": "/{slug}",
-			"supports": ["drafts", "revisions", "search"],
-			"fields": [
-				{
-					"slug": "title",
-					"label": "Title",
-					"type": "string",
-					"required": true,
-					"searchable": true
-				},
-				{
-					"slug": "content",
-					"label": "Content",
-					"type": "portableText",
-					"searchable": true
-				}
-			]
-		}
-	],
-	"taxonomies": [
-		{
-			"name": "category",
-			"label": "Categories",
-			"labelSingular": "Category",
-			"hierarchical": true,
-			"collections": ["posts"],
-			"terms": [
-				{
-					"slug": "general",
-					"label": "General"
-				},
-				{
-					"slug": "updates",
-					"label": "Updates"
-				}
-			]
-		},
-		{
-			"name": "tag",
-			"label": "Tags",
-			"labelSingular": "Tag",
-			"hierarchical": false,
-			"collections": ["posts"],
-			"terms": [
-				{
-					"slug": "starter",
-					"label": "Starter"
-				},
-				{
-					"slug": "example",
-					"label": "Example"
-				}
-			]
-		}
-	],
-	"menus": [
-		{
-			"name": "primary",
-			"label": "Primary Navigation",
-			"items": [
-				{
-					"type": "custom",
-					"label": "Home",
-					"url": "/"
-				},
-				{
-					"type": "custom",
-					"label": "Posts",
-					"url": "/posts"
-				},
-				{
-					"type": "custom",
-					"label": "About",
-					"url": "/about"
-				}
-			]
-		}
-	],
-	"widgetAreas": [
-		{
-			"name": "sidebar",
-			"label": "Sidebar",
-			"description": "Sidebar widget area",
-			"widgets": [
-				{
-					"type": "component",
-					"componentId": "core:search",
-					"title": "Search"
-				},
-				{
-					"type": "component",
-					"componentId": "core:categories",
-					"title": "Categories"
-				},
-				{
-					"type": "component",
-					"componentId": "core:recent-posts",
-					"title": "Recent Posts",
-					"settings": {
-						"count": 5
-					}
-				}
-			]
-		}
-	],
-	"content": {
-		"pages": [
-			{
-				"id": "about",
-				"slug": "about",
-				"status": "published",
-				"data": {
-					"title": "About",
-					"content": [
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "This is the about page. Edit it in the admin panel or replace this template with your own design.",
-									"_key": "k1"
-								}
-							],
-							"_key": "k0"
-						}
-					]
-				}
-			}
-		],
-		"posts": [
-			{
-				"id": "post-1",
-				"slug": "welcome",
-				"status": "published",
-				"data": {
-					"title": "Welcome",
-					"excerpt": "Your first post. Replace this with your own content.",
-					"content": [
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "This is a starter post. The templates in this project show the basic patterns for querying and rendering EmDash content. Replace them with your own design.",
-									"_key": "k1"
-								}
-							],
-							"_key": "k0"
-						},
-						{
-							"_type": "block",
-							"style": "h2",
-							"children": [
-								{
-									"_type": "span",
-									"text": "What to do next",
-									"_key": "k3"
-								}
-							],
-							"_key": "k2"
-						},
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "Open the admin panel to add content, or edit the Astro pages in src/pages to change how content is displayed.",
-									"_key": "k5"
-								}
-							],
-							"_key": "k4"
-						}
-					]
-				},
-				"taxonomies": {
-					"category": ["general"],
-					"tag": ["starter", "example"]
-				}
-			}
-		]
-	}
+  "$schema": "https://emdashcms.com/seed.schema.json",
+  "version": "1",
+  "meta": { "name": "pahan.me", "description": "Personal portfolio of Pahan Sarathchandra", "author": "Pahan Sarathchandra" },
+  "settings": { "title": "Pahan Sarathchandra", "tagline": "Frontend Engineer" },
+  "collections": [
+    {
+      "slug": "work", "label": "Work", "labelSingular": "Job",
+      "supports": ["drafts", "revisions"],
+      "fields": [
+        { "slug": "order", "label": "Order", "type": "integer", "required": true },
+        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "company", "label": "Company / Role", "type": "string", "required": true },
+        { "slug": "description", "label": "Description", "type": "text", "searchable": true },
+        { "slug": "tags", "label": "Tags", "type": "json" },
+        { "slug": "year_label", "label": "Year label", "type": "string" },
+        { "slug": "url", "label": "URL", "type": "string" }
+      ]
+    },
+    {
+      "slug": "projects", "label": "Projects", "labelSingular": "Project",
+      "supports": ["drafts", "revisions"],
+      "fields": [
+        { "slug": "order", "label": "Order", "type": "integer", "required": true },
+        { "slug": "name", "label": "Name", "type": "string", "required": true, "searchable": true },
+        { "slug": "pill", "label": "Pill", "type": "string" },
+        { "slug": "description", "label": "Description", "type": "text", "searchable": true },
+        { "slug": "url", "label": "URL", "type": "string" }
+      ]
+    },
+    {
+      "slug": "awards", "label": "Awards", "labelSingular": "Award",
+      "supports": ["drafts", "revisions"],
+      "fields": [
+        { "slug": "order", "label": "Order", "type": "integer", "required": true },
+        { "slug": "rank", "label": "Rank", "type": "string", "required": true },
+        { "slug": "context", "label": "Context", "type": "text" },
+        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "issuer", "label": "Issuer", "type": "string" },
+        { "slug": "description", "label": "Description", "type": "text", "searchable": true },
+        { "slug": "links", "label": "Links", "type": "json" }
+      ]
+    }
+  ],
+  "content": {
+    "work": [
+      { "id": "sl-boutique-tours", "slug": "sl-boutique-tours", "status": "published", "data": { "order": 1, "title": "Sri Lanka Boutique Tours ↗", "company": "Sirisara OÜ · Design & Frontend", "year_label": "2025 — 26", "url": "https://slboutiquetours.com/", "tags": ["Astro","Sveltia CMS","HubSpot","Claude Code","Claude Design","i18n","Vimeo","SEO"], "description": "Designed and built the marketing site for a Tallinn-based boutique travel studio — a cinematic Vimeo hero, a curated tour catalogue, and a CMS-driven travel journal, localized across English, Estonian, and Russian." } },
+      { "id": "bigwins", "slug": "bigwins", "status": "published", "data": { "order": 2, "title": "BigWins iGaming platform", "company": "Moon-Rocket · Lead Frontend Engineer", "year_label": "2023 — 24", "tags": ["Next.js","TypeScript","Payload CMS","Turborepo","Radix UI"], "description": "Primary frontend engineer for a crypto-first online casino. Built and maintained the design system and component library, localized into Japanese, and served as release manager." } },
+      { "id": "fishbrain", "slug": "fishbrain", "status": "published", "data": { "order": 3, "title": "Fishbrain — social app for 14M anglers", "company": "Fishbrain · Senior Frontend Engineer", "year_label": "2021 — 22", "tags": ["Next.js","GraphQL","Apollo","Storybook"], "description": "Built search-as-you-type for the main search (~30% faster), introduced Storybook visual testing into CI, and ran product A/B tests on the web platform." } },
+      { "id": "choreo", "slug": "choreo", "status": "published", "data": { "order": 4, "title": "Choreo cloud platform", "company": "WSO2 · Associate Technical Lead", "year_label": "2017 — 21", "tags": ["React","Redux","SWR","Material UI"], "description": "Led frontend architecture for a cloud-native development platform, guided a team of 6, drove a company-wide testing strategy, and cut build time from 1.5 hours to ~20 minutes." } },
+      { "id": "kadira", "slug": "kadira", "status": "published", "data": { "order": 5, "title": "Kadira — performance monitoring", "company": "Kadira Inc · Founding Engineer", "year_label": "2013 — 16", "tags": ["React","Node.js","Meteor","GraphQL"], "description": "First employee on a monitoring platform for Meteor.js — grew it to 8,000+ users and 3,000+ paying customers, and helped productize React Storybook into a UI development environment." } },
+      { "id": "storybook-hub", "slug": "storybook-hub", "status": "published", "data": { "order": 6, "title": "Storybook Hub", "company": "Kadira Inc · Product project", "year_label": "2016", "tags": ["React","React Router","Node.js"], "description": "A hosted UI development environment for React Storybook components, building both the front and back end." } },
+      { "id": "bulletproof-meteor", "slug": "bulletproof-meteor", "status": "published", "data": { "order": 7, "title": "BulletProof Meteor", "company": "Kadira Inc · Product project", "year_label": "2015", "tags": ["React","Meteor","Gumroad"], "description": "A gamified tutorial site teaching how to build fast, efficient Meteor apps, with payments via Gumroad." } },
+      { "id": "comet-engine", "slug": "comet-engine", "status": "published", "data": { "order": 8, "title": "Comet Engine", "company": "Kadira Inc · Product project", "year_label": "2013", "tags": ["Meteor","Blaze","DigitalOcean"], "description": "Painless Meteor scaling and hosting, with one-click DigitalOcean deployments." } }
+    ],
+    "projects": [
+      { "id": "react-storybook", "slug": "react-storybook", "status": "published", "data": { "order": 1, "name": "React Storybook", "pill": "PRODUCTIZATION", "url": "https://storybook.js.org/blog/the-storybook-story/", "description": "Contributed to the design and productization of Storybook — now the industry-standard UI development environment for components." } },
+      { "id": "kadira-apm", "slug": "kadira-apm", "status": "published", "data": { "order": 2, "name": "Kadira APM", "pill": "PLATFORM", "url": "https://github.com/meteorhacks/kadira", "description": "Founding engineer on an end-to-end performance monitoring platform for Meteor.js, delivering real-time insights to thousands of apps." } },
+      { "id": "siyalu-browser", "slug": "siyalu-browser", "status": "published", "data": { "order": 3, "name": "Siyalu Browser", "pill": "ANDROID · 100K", "description": "A free, open-source web browser with comprehensive Sinhala language support. Reached 100,000 downloads on Google Play." } },
+      { "id": "kichibichiya", "slug": "kichibichiya", "status": "published", "data": { "order": 4, "name": "Kichibichiya", "pill": "ANDROID", "description": "A friendly Twitter client for Android with full Sinhala language support, built on Twidere." } },
+      { "id": "wadan-sewuma", "slug": "wadan-sewuma", "status": "published", "data": { "order": 5, "name": "Wadan Sewuma", "pill": "ANDROID", "description": "An English→Sinhala dictionary app for Android, with camera word capture for instant lookups. Nominated Best Android App at Etisalat AppZone Champions 2012." } },
+      { "id": "qschrome", "slug": "qschrome", "status": "published", "data": { "order": 6, "name": "QSChrome", "pill": "CHROME · FIRST", "description": "A Sinhala phonetic typing keyboard for Google Chrome — the first of its kind, before Google Input Tools shipped one." } },
+      { "id": "censitip", "slug": "censitip", "status": "published", "data": { "order": 7, "name": "Censitip", "pill": "CHROME", "description": "A Sinhala pop-up dictionary extension for Chrome — instant definitions on hover, anywhere on the web." } },
+      { "id": "sinhala-word-cloud", "slug": "sinhala-word-cloud", "status": "published", "data": { "order": 8, "name": "Sinhala Word Cloud", "pill": "DATAVIZ · D3", "description": "The first Sinhala word cloud, generated with D3 from a full book’s text and used on the cover of “Economic Strategies Appropriate for Sri Lanka.”" } },
+      { "id": "buzzradio", "slug": "buzzradio", "status": "published", "data": { "order": 9, "name": "Buzzradio", "pill": "WEB · RADIO", "description": "Community-driven online radio on Google App Engine, with real-time chat and Ogg audio streaming." } },
+      { "id": "hathmaluwa", "slug": "hathmaluwa", "status": "published", "data": { "order": 10, "name": "Hathmaluwa", "pill": "WEB · ANDROID", "description": "A blog aggregator for Sinhala, Tamil & English blogs, plus a companion Android reader." } },
+      { "id": "olpc-workshops", "slug": "olpc-workshops", "status": "published", "data": { "order": 11, "name": "OLPC Workshops", "pill": "COMMUNITY", "description": "Volunteer workshops for One Laptop Per Child, bringing low-cost laptops to schoolchildren." } }
+    ],
+    "awards": [
+      { "id": "fight-club", "slug": "fight-club", "status": "published", "data": { "order": 1, "rank": "1st", "context": "Node Knockout '15\n~400 teams worldwide", "title": "Fight Club — Overall Winner", "issuer": "Node.js Knockout · Nov 2015 · with Kadira Inc.", "description": "A real-time, webcam-based fighting game built in a 48-hour global hackathon — powered by WebRTC and motion detection, and inspired by the film. Judged the overall winner against roughly 400 teams worldwide.", "links": [{"label":"Watch demo ↗","url":"https://www.youtube.com/watch?v=Bca7ccuzQuE"},{"label":"Source ↗","url":"https://github.com/nko5/fight-club"}] } },
+      { "id": "ko-train", "slug": "ko-train", "status": "published", "data": { "order": 2, "rank": "1st", "context": "CMB.js Colombo '14\n+ People's Choice", "title": "KO-Train — Overall Winner & People's Choice", "issuer": "CMB.js Hackathon, Colombo · Apr 2014 · with Kadira Inc.", "description": "A train-delay notification system built with Meteor.js and Android. Took both the overall winner and People's Choice awards at Colombo's JS hackathon.", "links": [{"label":"Write-up ↗","url":"http://readme.lk/cmbhack-js-battle-javascript-warriors/"}] } },
+      { "id": "the-big-wall", "slug": "the-big-wall", "status": "published", "data": { "order": 3, "rank": "5th", "context": "Node Knockout '16\n~400 teams worldwide", "title": "The Big Wall — Top 5 finish", "issuer": "Node.js Knockout · Nov 2016 · with Kadira Inc.", "description": "A virtual wall spanning the US–Mexico border where anyone could draw collaborative graffiti in real time. Placed 5th overall among roughly 400 competing teams.", "links": [] } },
+      { "id": "open-comment-box", "slug": "open-comment-box", "status": "published", "data": { "order": 4, "rank": "6th", "context": "Node Knockout '13\n~400 teams worldwide", "title": "Open Comment Box — Top 6 finish", "issuer": "Node.js Knockout · Nov 2013 · with Kadira Inc.", "description": "An open-source, self-hostable real-time commenting platform — a Disqus alternative you can run anywhere. Placed 6th overall among roughly 400 competing teams.", "links": [] } }
+    ]
+  }
 }

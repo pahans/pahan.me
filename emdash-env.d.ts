@@ -5,6 +5,24 @@
 
 import type { ContentBylineCredit, TaxonomyTerm, PortableTextBlock } from "emdash";
 
+export interface Award {
+  id: string;
+  slug: string | null;
+  status: string;
+  order: number;
+  rank: string;
+  context?: string;
+  title: string;
+  issuer?: string;
+  description?: string;
+  links?: unknown;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 export interface Page {
   id: string;
   slug: string | null;
@@ -33,9 +51,46 @@ export interface Post {
   terms?: Record<string, TaxonomyTerm[]>;
 }
 
+export interface Project {
+  id: string;
+  slug: string | null;
+  status: string;
+  order: number;
+  name: string;
+  pill?: string;
+  description?: string;
+  url?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface Work {
+  id: string;
+  slug: string | null;
+  status: string;
+  order: number;
+  title: string;
+  company: string;
+  description?: string;
+  tags?: unknown;
+  year_label?: string;
+  url?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 declare module "emdash" {
   interface EmDashCollections {
+    awards: Award;
     pages: Page;
     posts: Post;
+    projects: Project;
+    work: Work;
   }
 }
