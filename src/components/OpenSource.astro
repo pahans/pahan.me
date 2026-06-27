@@ -1,0 +1,23 @@
+---
+import { getEmDashCollection } from "emdash";
+const { entries: projects, cacheHint } = await getEmDashCollection("projects", {
+  status: "published",
+  orderBy: { order: "asc" },
+});
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+const sorted = projects.toSorted((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+---
+<section id="opensource" data-screen-label="Open Source">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>Open source & side projects</h2><span class="kicker">04 — in the open</span></div>
+    <div class="os-grid">
+      {sorted.map((p) => (
+        <a class="os reveal" href={p.data.url ?? "#"} target="_blank" rel="noopener">
+          <div class="tagrow"><span class="pill">{p.data.pill}</span><span class="arr">↗</span></div>
+          <h3>{p.data.name}</h3>
+          <p>{p.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

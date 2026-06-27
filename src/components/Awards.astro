@@ -1,0 +1,36 @@
+---
+import { getEmDashCollection } from "emdash";
+const { entries: awards, cacheHint } = await getEmDashCollection("awards", {
+  status: "published",
+  orderBy: { order: "asc" },
+});
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+const sorted = awards.toSorted((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+---
+<section id="awards" data-screen-label="Awards">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>Honors & awards</h2><span class="kicker">05 — recognition</span></div>
+    <div class="awards">
+      {sorted.map((aw) => (
+        <article class="award reveal">
+          <div class="rank">
+            <div class="big">{aw.data.rank}</div>
+            <div class="of" set:html={String(aw.data.context ?? "").replace(/\n/g, "<br>")} />
+          </div>
+          <div>
+            <h3>{aw.data.title}</h3>
+            <div class="iss">{aw.data.issuer}</div>
+            <p>{aw.data.description}</p>
+            {((aw.data.links ?? []) as {label: string; url: string}[]).length > 0 && (
+              <div class="links">
+                {(aw.data.links as {label: string; url: string}[]).map((l) => (
+                  <a href={l.url} target="_blank" rel="noopener">{l.label}</a>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

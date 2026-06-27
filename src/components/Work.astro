@@ -1,0 +1,31 @@
+---
+import { getEmDashCollection } from "emdash";
+const { entries: jobs, cacheHint } = await getEmDashCollection("work", {
+  status: "published",
+  orderBy: { order: "asc" },
+});
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+const sorted = jobs.toSorted((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+<section id="work" data-screen-label="Selected Work">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>Selected work</h2><span class="kicker">02 — 2013–2026</span></div>
+    <div class="work">
+      {sorted.map((job, i) => (
+        <article class="job reveal">
+          <div class="no">{pad(i + 1)}</div>
+          <div>
+            <h3>{job.data.url
+              ? <a href={job.data.url} target="_blank" rel="noopener">{job.data.title}</a>
+              : job.data.title}</h3>
+            <div class="co">{job.data.company}</div>
+            <p>{job.data.description}</p>
+            <div class="tags">{((job.data.tags ?? []) as string[]).map((t: string) => <span class="tag">{t}</span>)}</div>
+          </div>
+          <div class="meta"><span class="yr">{job.data.year_label}</span></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
