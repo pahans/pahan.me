@@ -1,54 +1,35 @@
-# EmDash Starter Template (Cloudflare)
+# pahan.me
 
-A general-purpose starting point for building sites with [EmDash](https://github.com/emdash-cms/emdash) on Cloudflare Workers. Includes posts, pages, categories, and tags with minimal styling -- designed as a base you can build on rather than a finished theme.
-
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/emdash-cms/templates/tree/main/starter-cloudflare)
-
-## What's Included
-
-- Posts with category and tag archives
-- Static pages via slug routing
-- Seed data with demo content
-- D1 database and R2 storage pre-configured
-- Dark/light mode support
-
-## Pages
-
-| Page | Route |
-|---|---|
-| Homepage | `/` |
-| All posts | `/posts` |
-| Single post | `/posts/:slug` |
-| Category archive | `/category/:slug` |
-| Tag archive | `/tag/:slug` |
-| Static pages | `/:slug` |
-| 404 | fallback |
-
-## Infrastructure
-
-- **Runtime:** Cloudflare Workers
-- **Database:** D1
-- **Storage:** R2
-- **Framework:** Astro with `@astrojs/cloudflare`
+Personal portfolio of Pahan Sarathchandra, built with [EmDash CMS](https://github.com/emdash-cms/emdash) on Cloudflare (Astro).
 
 ## Local Development
 
-```bash
-pnpm install
-pnpm bootstrap
-pnpm dev
-```
-
-## Deploying
+Requires **Node 22.x**.
 
 ```bash
-pnpm deploy
+npx emdash dev
 ```
 
-Or click the deploy button above to set up the project in your Cloudflare account.
+This runs migrations and applies the seed. The site is available at `http://localhost:4321`; the admin panel is at `http://localhost:4321/_emdash/admin` (first run launches the setup wizard).
 
-## See Also
+## Content
 
-- [Node.js variant](../starter) -- same template using SQLite and local file storage
-- [All templates](../)
-- [EmDash documentation](https://github.com/emdash-cms/emdash/tree/main/docs)
+The schema and seed content live in `seed/seed.json`. Three collections — **Work**, **Projects**, and **Awards** — are editable in the admin. The rest of the page (hero, about, stack, contact) is in `src/components/`.
+
+## Build
+
+```bash
+npm run build
+```
+
+## Deploy
+
+```bash
+npm run deploy
+```
+
+Requires `wrangler login`, a D1 database named `pahan-me`, an R2 bucket named `pahan-me-media`, and the `EMDASH_ENCRYPTION_KEY` secret set in Cloudflare.
+
+## Notes
+
+`CLAUDE.md` and `AGENTS.md` are EmDash-generated and left as-is.
