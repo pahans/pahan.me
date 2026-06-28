@@ -8,14 +8,12 @@
 		{
 			"binding": "DB",
 			"database_name": "pahan-me",
+			"database_id": "d8239df2-851b-4b16-b594-98568f9e9a5d",
 		},
 	],
-	"r2_buckets": [
-		{
-			"binding": "MEDIA",
-			"bucket_name": "pahan-me-media",
-		},
-	],
+	// R2 media storage omitted until R2 is enabled on the account (see astro.config.mjs).
+	// To re-enable: create bucket `pahan-me-media` and restore:
+	// "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "pahan-me-media" }],
 	// Worker Loader for plugin sandboxing
 	"worker_loaders": [
 		{
