@@ -11,15 +11,21 @@
 			"database_id": "d8239df2-851b-4b16-b594-98568f9e9a5d",
 		},
 	],
+	// Session store (EmDash auth/CSRF). KV namespace created on first deploy; bound explicitly.
+	"kv_namespaces": [
+		{
+			"binding": "SESSION",
+			"id": "6abb79cf4e7d4bf4a03cd72c22a9ca7f",
+		},
+	],
 	// R2 media storage omitted until R2 is enabled on the account (see astro.config.mjs).
 	// To re-enable: create bucket `pahan-me-media` and restore:
 	// "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "pahan-me-media" }],
-	// Worker Loader for plugin sandboxing
-	"worker_loaders": [
-		{
-			"binding": "LOADER",
-		},
-	],
+	// Worker Loader (plugin sandboxing) omitted: it requires the Workers Paid plan
+	// (Dynamic Workers). The sandbox runner is only instantiated when `sandboxRunner`
+	// is set in astro.config.mjs AND a sandboxed plugin is loaded — this site has no
+	// plugins, so env.LOADER is never accessed at runtime. To re-enable on a paid plan:
+	// "worker_loaders": [{ "binding": "LOADER" }],
 	// Drives scheduled publishing, plugin cron, and maintenance (see src/worker.ts)
 	"triggers": {
 		"crons": ["* * * * *"],
