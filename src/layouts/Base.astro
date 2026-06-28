@@ -1,0 +1,43 @@
+---
+import { getSiteSettings } from "emdash";
+import { EmDashHead, EmDashBodyStart, EmDashBodyEnd } from "emdash/ui";
+import { createPublicPageContext } from "emdash/page";
+import { resolveStarterSiteIdentity } from "../utils/site-identity";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string | null;
+}
+const { title = "Pahan Sarathchandra — Frontend Engineer", description } = Astro.props;
+const { siteTitle, siteTagline } = resolveStarterSiteIdentity(await getSiteSettings());
+const pageDescription = description ?? siteTagline;
+const pageCtx = createPublicPageContext({
+  Astro,
+  kind: "custom",
+  pageType: "website",
+  title,
+  pageTitle: title,
+  description: pageDescription,
+  siteName: siteTitle,
+});
+---
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    {pageDescription && <meta name="description" content={pageDescription} />}
+    <script is:inline>try{var t=localStorage.getItem('pf-theme');if(t){document.documentElement.setAttribute('data-theme',t);}}catch(e){}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+    <EmDashHead page={pageCtx} />
+  </head>
+  <body>
+    <EmDashBodyStart page={pageCtx} />
+    <slot />
+    <EmDashBodyEnd page={pageCtx} />
+  </body>
+</html>
