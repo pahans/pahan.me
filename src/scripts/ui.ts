@@ -10,6 +10,13 @@ export function initUI() {
     try { localStorage.setItem('pf-theme', next); } catch (e) {}
   });
 
+  // Follow the system preference until the user makes an explicit choice.
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    let stored = null;
+    try { stored = localStorage.getItem('pf-theme'); } catch (err) {}
+    if (!stored) root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+  });
+
   function countUp(el: HTMLElement) {
     const target = parseFloat(el.dataset.count || '0'), suf = el.dataset.suffix || '';
     const dur = 1000, start = performance.now();
