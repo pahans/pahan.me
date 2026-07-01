@@ -3,7 +3,7 @@
 
 /// <reference types="emdash/locals" />
 
-import type { ContentBylineCredit, TaxonomyTerm, PortableTextBlock } from "emdash";
+import type { ContentBylineCredit, TaxonomyTerm } from "emdash";
 
 export interface Award {
   id: string;
@@ -23,34 +23,6 @@ export interface Award {
   terms?: Record<string, TaxonomyTerm[]>;
 }
 
-export interface Page {
-  id: string;
-  slug: string | null;
-  status: string;
-  title: string;
-  content?: PortableTextBlock[];
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date | null;
-  bylines?: ContentBylineCredit[];
-  terms?: Record<string, TaxonomyTerm[]>;
-}
-
-export interface Post {
-  id: string;
-  slug: string | null;
-  status: string;
-  title: string;
-  featured_image?: { id: string; src?: string; alt?: string; width?: number; height?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
-  content?: PortableTextBlock[];
-  excerpt?: string;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date | null;
-  bylines?: ContentBylineCredit[];
-  terms?: Record<string, TaxonomyTerm[]>;
-}
-
 export interface Project {
   id: string;
   slug: string | null;
@@ -58,6 +30,7 @@ export interface Project {
   order: number;
   name: string;
   pill?: string;
+  image?: { id: string; src?: string; alt?: string; width?: number; height?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
   description?: string;
   url?: string;
   createdAt: Date;
@@ -88,8 +61,6 @@ export interface Work {
 declare module "emdash" {
   interface EmDashCollections {
     awards: Award;
-    pages: Page;
-    posts: Post;
     projects: Project;
     work: Work;
   }

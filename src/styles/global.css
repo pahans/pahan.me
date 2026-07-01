@@ -143,6 +143,9 @@
   .os .pill{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.05em;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:4px 8px;}
   .os .arr{color:var(--faint);font-size:18px;transition:transform .25s,color .25s;}
   .os:hover .arr{transform:translate(3px,-3px);color:var(--accent);}
+  .os .os-img{margin-top:16px;border-radius:10px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;}
+  .os .os-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s;}
+  .os:hover .os-img img{transform:scale(1.03);}
   .os h3{font-size:20px;font-weight:600;letter-spacing:-.02em;margin:auto 0 9px;}
   .os p{font-size:14px;line-height:1.55;color:var(--muted);}
   @media(max-width:760px){.os-grid{grid-template-columns:1fr;}}
