@@ -1,5 +1,6 @@
 ---
 import { getEmDashCollection } from "emdash";
+import { Image } from "emdash/ui";
 const { entries: jobs, cacheHint } = await getEmDashCollection("work", {
   status: "published",
   orderBy: { order: "asc" },
@@ -23,7 +24,12 @@ const pad = (n: number) => String(n).padStart(2, "0");
             <p>{job.data.description}</p>
             <div class="tags">{((job.data.tags ?? []) as string[]).map((t: string) => <span class="tag">{t}</span>)}</div>
           </div>
-          <div class="meta"><span class="yr">{job.data.year_label}</span></div>
+          <div class="meta">
+            {job.data.image?.src && (
+              <div class="job-img"><Image image={job.data.image} /></div>
+            )}
+            <span class="yr">{job.data.year_label}</span>
+          </div>
         </article>
       ))}
     </div>
