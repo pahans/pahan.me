@@ -47,6 +47,7 @@ export interface Work {
   order: number;
   title: string;
   company: string;
+  image?: { id: string; src?: string; alt?: string; width?: number; height?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
   description?: string;
   tags?: unknown;
   year_label?: string;

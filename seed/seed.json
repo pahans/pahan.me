@@ -11,6 +11,7 @@
         { "slug": "order", "label": "Order", "type": "integer", "required": true },
         { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
         { "slug": "company", "label": "Company / Role", "type": "string", "required": true },
+        { "slug": "image", "label": "Image", "type": "image" },
         { "slug": "description", "label": "Description", "type": "text", "searchable": true },
         { "slug": "tags", "label": "Tags", "type": "json" },
         { "slug": "year_label", "label": "Year label", "type": "string" },
