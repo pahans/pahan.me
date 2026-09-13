@@ -9,7 +9,7 @@ interface Props {
   title?: string;
   description?: string | null;
 }
-const { title = "Pahan Sarathchandra — Frontend Engineer", description } = Astro.props;
+const { title = "Pahan Sarathchandra — Engineer", description } = Astro.props;
 const { siteTitle, siteTagline } = resolveStarterSiteIdentity(await getSiteSettings());
 const pageDescription = description ?? siteTagline;
 const pageCtx = createPublicPageContext({
