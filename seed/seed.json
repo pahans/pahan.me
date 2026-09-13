@@ -2,7 +2,7 @@
   "$schema": "https://emdashcms.com/seed.schema.json",
   "version": "1",
   "meta": { "name": "pahan.me", "description": "Personal portfolio of Pahan Sarathchandra", "author": "Pahan Sarathchandra" },
-  "settings": { "title": "Pahan Sarathchandra", "tagline": "Frontend Engineer" },
+  "settings": { "title": "Pahan Sarathchandra", "tagline": "Engineer" },
   "collections": [
     {
       "slug": "work", "label": "Work", "labelSingular": "Job",
